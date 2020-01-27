@@ -1,6 +1,9 @@
 let quizContainer = document.getElementById('quiz');
 let resultsContainer = document.getElementById('results');
 let submitButton = document.getElementById('submit');
+// let resetButton = document.getElementById('reloadPage');
+//Couldn't get a timer to work. Nor the questions sequentially to show up, instead
+//of all 5 at once.
 
 // Define questions
 const myQuestions = [
@@ -108,12 +111,12 @@ function showResults(){
     if(userAnswer === currentQuestion.correctAnswer){
       numCorrect++;
       //green for correct....can't get ONLY the right answer green though
-      userAnswer.style.color = 'green'; 
+      answerContainers[questionNumber].style.color = 'green';
       // answerContainers[questionNumber].style.color = "green";
     }
       else {
         //wrong answers = gray
-        answerContainers[questionNumber].style.color = "gray";
+        answerContainers[questionNumber].style.color = "red";
       }
   });
   resultsContainer.innerHTML = numCorrect + ' out of ' + myQuestions.length + ' correct';
@@ -125,3 +128,6 @@ buildQuiz();
 
 // show results on submit
 submitButton.addEventListener('click', showResults);
+
+//This should make the reset button work, but it doesn't
+// resetButton.addEventListener('click', location.reload());
